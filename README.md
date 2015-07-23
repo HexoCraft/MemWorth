@@ -1,5 +1,5 @@
 # MemWorth [![Build Status](https://drone.io/github.com/hexosse/MemWorth/status.png)](https://drone.io/github.com/hexosse/MemWorth/latest)
-Quickly create woth.yml file from Minecraft Economy Manager.
+Quickly create worth.yml file from Minecraft Economy Manager.
 
 <br>
 ###Why
