@@ -85,7 +85,8 @@ public class WorthBuilder
                 int id = Integer.parseInt(idData[0]);
                 int data = Integer.parseInt(idData.length > 1 ? idData[1] : "0");
                 String comment = record.get(1);
-                Number worth = numFormat.parse(record.get(4).replaceAll("^[^a-zA-Z0-9\\s]+|[^a-zA-Z0-9\\s]+$", ""));
+                String sworth = record.get(4).trim().replaceAll(" ","").replaceAll("^[^a-zA-Z0-9\\s]+|[^a-zA-Z0-9\\s]+$", "");
+                Number worth = numFormat.parse(sworth);
 
                 // Add Item to list
                 if(worth.doubleValue()!=0)
