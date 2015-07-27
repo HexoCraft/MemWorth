@@ -22,7 +22,7 @@
 
     <groupId>com.github.hexosse</groupId>
     <artifactId>MemWorth</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>MemWorth</name>
     <description>Quickly create worth.yml file from Minecraft Economy Manager.</description>
