@@ -19,7 +19,6 @@ package com.github.hexosse.memworth;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.regex.Matcher;
 
 /**
  * This file is part of MemWorth

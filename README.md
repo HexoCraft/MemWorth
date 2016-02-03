@@ -1,4 +1,4 @@
-# MemWorth [![Build Status](https://drone.io/github.com/hexosse/MemWorth/status.png)](https://drone.io/github.com/hexosse/MemWorth/latest)
+# MemWorth [![Build Status](https://drone.io/github.com/hexosse/MemWorth/status.png)](https://drone.io/github.com/hexosse/MemWorth/latest) [![Dependency Status](https://www.versioneye.com/user/projects/56b1fd881c89e1003039a303/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56b1fd881c89e1003039a303)
 Quickly create worth.yml file from Minecraft Economy Manager.
 
 <br>

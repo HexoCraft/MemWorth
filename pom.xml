@@ -29,6 +29,7 @@
     <url>https://github.com/hexosse/MemWorth</url>
 
 
+    <!-- License -->
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -38,6 +39,15 @@
     </licenses>
 
 
+    <!-- scm -->
+    <scm>
+        <connection>scm:git:git://github.com/hexosse/MemWorth.git</connection>
+        <developerConnection>scm:git:git@github.com:hexosse/MemWorth.git</developerConnection>
+        <url>https://github.com/hexosse/MemWorth</url>
+    </scm>
+
+
+    <!-- Propriétés du projet -->
     <properties>
         <jdk.version>1.7</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,6 +56,7 @@
     </properties>
 
 
+    <!-- Développeurs -->
     <developers>
         <developer>
             <id>hexosse</id>
@@ -53,6 +64,7 @@
             <url>https://github.com/hexosse</url>
         </developer>
     </developers>
+
 
     <!-- Création d'un repository temporaire -->
     <distributionManagement>
@@ -78,14 +90,17 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
-            <version>1.1</version>
+            <version>1.2</version>
         </dependency>
     </dependencies>
+
 
     <!-- Options de build -->
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <finalName>${project.name}</finalName>
+        <finalName>${project.name}-${project.version}</finalName>
+
+        <!-- Ressources -->
         <resources>
             <resource>
                 <targetPath>.</targetPath>
@@ -96,42 +111,65 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
         <!-- Liste des plugins -->
+        <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins -->
         <plugins>
-            <!-- Liste des plugin maven -->
-            <!-- http://mvnrepository.com/artifact/org.apache.maven.plugins -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <finalName>${project.name}</finalName>
-                </configuration>
-            </plugin>
+
+            <!-- maven-clean-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.6.1</version>
+                <version>3.0.0</version>
             </plugin>
+
+            <!-- maven-compiler-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.5</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
+
+            <!-- maven-source-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
+            <!-- maven-javadoc-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- maven-shade-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.4.3</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -161,32 +199,31 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- maven-jar-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.4</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifestEntries>
+                            <Name>${project.name}</Name>
+                            <Version>${project.version}</Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
             </plugin>
+
+            <!-- maven-install-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
             </plugin>
+
+            <!-- maven-deploy-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -196,6 +233,8 @@
                     </altDeploymentRepository>
                 </configuration>
             </plugin>
+
+            <!-- site-maven-plugin (GitHub) -->
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
