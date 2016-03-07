@@ -45,6 +45,10 @@
         <developerConnection>scm:git:git@github.com:hexosse/MemWorth.git</developerConnection>
         <url>https://github.com/hexosse/MemWorth</url>
     </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/hexosse/MemWorth/issues</url>
+    </issueManagement>
 
 
     <!-- Propriétés du projet -->
@@ -127,7 +131,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
@@ -136,7 +140,7 @@
             </plugin>
 
             <!-- maven-source-plugin -->
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>2.4</version>
@@ -148,22 +152,22 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
             <!-- maven-javadoc-plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--  <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-javadoc-plugin</artifactId>
+                 <version>2.10.3</version>
+                 <executions>
+                     <execution>
+                         <id>attach-javadocs</id>
+                         <goals>
+                             <goal>jar</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+             </plugin> -->
 
             <!-- maven-shade-plugin -->
             <plugin>
@@ -191,6 +195,8 @@
                                     <include>org.apache.commons:commons-csv</include>
                                 </includes>
                             </artifactSet>
+                            <!-- remove unnecessary stuff -->
+                            <minimizeJar>true</minimizeJar>
                             <!-- utterly useless artifact from shade 2.x -->
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <!-- Le fichier jar d'origine est renommé en original-XXXX.jar -->
@@ -206,6 +212,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
+                    <finalName>${project.build.finalName}</finalName>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                         <manifestEntries>
@@ -229,8 +236,7 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
                 <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/maven-repo
-                    </altDeploymentRepository>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/maven-repo</altDeploymentRepository>
                 </configuration>
             </plugin>
 

@@ -1,14 +1,11 @@
-### Java template
-*.class
+## IntelliJ : https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# User-specific stuff:
+.idea/workspace.xml
+.idea/vcs.xml
 
-# Folders #
-target
+# Sensitive or high-churn files:
+.idea/uiDesigner.xml
 
-# Inteliij #
-.idea
-*.iml
+# Maven:
+target/
