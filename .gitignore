@@ -1,6 +1,9 @@
 ## IntelliJ : https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
+## Maven : https://github.com/github/gitignore/blob/master/Maven.gitignore
 
 # User-specific stuff:
+.idea/dictionaries
+.idea/libraries
 .idea/workspace.xml
 .idea/vcs.xml
 
@@ -9,3 +12,5 @@
 
 # Maven:
 target/
+
+## Plugin-specific files:
